@@ -23,6 +23,9 @@
       <li><a href="#ai" onclick="showPage('ai')" class="nav-link hover:text-cyan-400 transition">AI</a></li>
       <li><a href="#webdev" onclick="showPage('webdev')" class="nav-link hover:text-cyan-400 transition">Web</a></li>
       <li><a href="#mobile" onclick="showPage('mobile')" class="nav-link hover:text-cyan-400 transition">Mobile</a></li>
+      <li><a href="#iot" onclick="showPage('iot')" class="nav-link hover:text-cyan-400 transition">IoT</a></li>
+      <li><a href="#pentes" onclick="showPage('pentes')" class="nav-link hover:text-cyan-400 transition">Pentes</a></li>
+      <li><a href="#history" onclick="showPage('history')" class="nav-link hover:text-cyan-400 transition">History</a></li>
       <li><a href="#design" onclick="showPage('design')" class="nav-link hover:text-cyan-400 transition">Design</a></li>
       <li><a href="#about" onclick="showPage('about')" class="nav-link hover:text-cyan-400 transition">Tentang</a></li>
       <li><a href="#contact" onclick="showPage('contact')" class="nav-link hover:text-cyan-400 transition">Kontak</a></li>
@@ -126,6 +129,80 @@
         <div class="flex gap-2 mt-auto">
           <a href="#" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium shadow transition">Demo</a>
           <a href="#" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Kode</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IOT PAGE -->
+  <section id="iot-page" class="page hidden">
+    <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-lime-400 to-teal-400 text-transparent bg-clip-text">Internet of Things (IoT)</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-lime-600">IoT</span>
+        <h3 class="text-xl font-semibold mb-2">Smart Home Automation</h3>
+        <p class="text-gray-300 mb-4">Proyek smart home: kontrol lampu, suhu, dan keamanan lewat web/app. NodeMCU, MQTT, Blynk.</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="#" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium shadow transition">Demo</a>
+          <a href="#" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Kode</a>
+        </div>
+      </div>
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-teal-600">Sensor</span>
+        <h3 class="text-xl font-semibold mb-2">Realtime Air Quality Monitoring</h3>
+        <p class="text-gray-300 mb-4">Pantau kualitas udara lingkungan via dashboard IoT dengan sensor gas, DHT, dan ESP8266.</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="#" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium shadow transition">Demo</a>
+          <a href="#" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Kode</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CYBER SECURITY PAGE -->
+  <section id="pentes-page" class="page hidden">
+    <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-red-400 to-orange-400 text-transparent bg-clip-text">Penetration Test & Cybersecurity</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-red-600">Pentest</span>
+        <h3 class="text-xl font-semibold mb-2">Web Application Vulnerability Assessment</h3>
+        <p class="text-gray-300 mb-4">Audit keamanan aplikasi web dengan OWASP ZAP, manual SQLi/XSS, dan rekomendasi mitigasi.</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="#" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-medium shadow transition">Laporan</a>
+          <a href="#" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Detail</a>
+        </div>
+      </div>
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-orange-600">Forensic</span>
+        <h3 class="text-xl font-semibold mb-2">Digital Forensic Investigation</h3>
+        <p class="text-gray-300 mb-4">Analisa insiden, tracing log, dan pengumpulan bukti digital pada kasus real (simulasi/laporan asli).</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="#" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-medium shadow transition">Laporan</a>
+          <a href="#" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Detail</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANOTHER PAGE -->
+  <section id="history-page" class="page hidden">
+    <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-amber-400 to-pink-400 text-transparent bg-clip-text">Eksperimen & Proyek Lain-lain</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-pink-600">History</span>
+        <h3 class="text-xl font-semibold mb-2">Riset: AI for Local Culture</h3>
+        <p class="text-gray-300 mb-4">Eksperimen AI untuk klasifikasi manuskrip kuno dan pelestarian budaya Nusantara (proyek capstone/skripsi).</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="#" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium shadow transition">Demo</a>
+          <a href="#" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Paper</a>
+        </div>
+      </div>
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-indigo-500">Lain-lain</span>
+        <h3 class="text-xl font-semibold mb-2">Music Generator Mini</h3>
+        <p class="text-gray-300 mb-4">Demo AI sederhana untuk generate musik MIDI berbasis pattern recognition. Cocok untuk eksperimen hiburan/edukasi.</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="#" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium shadow transition">Demo</a>
         </div>
       </div>
     </div>
