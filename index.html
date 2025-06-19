@@ -3,180 +3,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bagus Wahyu Pratomo - AI Portfolio</title>
+  <title>Bagus Wahyu Pratomo - Digital Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    .caret {
-      display: inline-block;
-      width: 2px;
-      background: #00bfff;
-      animation: blink 1s step-end infinite;
-      margin-left: 2px;
-      height: 1.3em;
-      vertical-align: bottom;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
+    html { scroll-behavior: smooth; }
+    .active-nav { color: #22d3ee !important; }
+    .caret { display: inline-block; width: 2px; background: #00bfff; animation: blink 1s step-end infinite; margin-left: 2px; height: 1.3em; vertical-align: bottom;}
+    @keyframes blink {0%,100%{opacity:1;}50%{opacity:0;}}
   </style>
 </head>
 <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 text-white min-h-screen">
 
-<!-- Header/Navbar -->
-<header class="fixed top-0 left-0 w-full z-10 bg-gray-900/80 backdrop-blur border-b border-gray-800">
-  <nav class="container mx-auto flex items-center justify-between py-4 px-6">
-    <span class="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">Nexus Bagus</span>
-    <ul class="flex gap-6 font-medium">
-      <li><a href="#home" class="hover:text-blue-400 transition">Home</a></li>
-      <li><a href="#projects" class="hover:text-blue-400 transition">Proyek</a></li>
-      <li><a href="#about" class="hover:text-blue-400 transition">Tentang</a></li>
-      <li><a href="#contact" class="hover:text-blue-400 transition">Kontak</a></li>
+<!-- HEADER/NAVBAR -->
+<header class="fixed top-0 left-0 w-full z-20 bg-gray-900/80 backdrop-blur border-b border-gray-800">
+  <nav class="container mx-auto flex items-center justify-between py-4 px-4 md:px-8">
+    <span class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text tracking-wide">Nexus Bagus</span>
+    <ul class="flex gap-6 font-medium" id="nav-links">
+      <li><a href="#home" onclick="showPage('home')" class="nav-link hover:text-cyan-400 transition active-nav">Home</a></li>
+      <li><a href="#ai" onclick="showPage('ai')" class="nav-link hover:text-cyan-400 transition">AI</a></li>
+      <li><a href="#webdev" onclick="showPage('webdev')" class="nav-link hover:text-cyan-400 transition">Web</a></li>
+      <li><a href="#mobile" onclick="showPage('mobile')" class="nav-link hover:text-cyan-400 transition">Mobile</a></li>
+      <li><a href="#design" onclick="showPage('design')" class="nav-link hover:text-cyan-400 transition">Design</a></li>
+      <li><a href="#about" onclick="showPage('about')" class="nav-link hover:text-cyan-400 transition">Tentang</a></li>
+      <li><a href="#contact" onclick="showPage('contact')" class="nav-link hover:text-cyan-400 transition">Kontak</a></li>
     </ul>
   </nav>
 </header>
-<div class="h-20"></div> <!-- Spacer agar konten tidak tertutup navbar -->
+<div class="h-20"></div>
 
-<!-- Perkenalan/Home -->
-<section id="home" class="flex flex-col items-center text-center space-y-6 min-h-[60vh] justify-center pt-8">
-  <!-- Gambar Profil -->
-  <img src="profile.png" alt="Foto Profil Bagus" class="w-32 h-32 rounded-full border-4 border-blue-500 shadow-xl mb-4">
+<!-- MAIN CONTENT - MULTI PAGE SECTION -->
+<main class="container mx-auto px-4 md:px-0 pb-20">
 
-  <!-- Animasi Typing -->
-  <h1 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400" id="typing-text"></h1>
-  <p id="typing-tagline" class="text-lg md:text-xl font-medium"></p>
+  <!-- HOME PAGE -->
+  <section id="home-page" class="page">
+    <div class="flex flex-col items-center text-center space-y-6 min-h-[60vh] justify-center pt-12">
+      <img src="profile.png" alt="Foto Profil Bagus" class="w-32 h-32 rounded-full border-4 border-blue-500 shadow-xl mb-4">
+      <h1 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400" id="typing-text"></h1>
+      <p id="typing-tagline" class="text-lg md:text-xl font-medium"></p>
+      <p class="max-w-2xl text-gray-300 mx-auto">
+        Saya Bagus, digital enthusiast dari Indonesia.  
+        Portofolio ini memuat proyek-proyek terbaik di bidang <span class="font-semibold text-cyan-400">AI, Web, Mobile, dan Design</span>.<br>
+        <span class="text-sm text-gray-400">Scroll atau klik menu untuk eksplorasi tiap bidang 👇</span>
+      </p>
+      <div class="flex flex-col md:flex-row gap-3 justify-center">
+        <span class="px-4 py-1 bg-blue-800 rounded-full text-sm">AI & Machine Learning</span>
+        <span class="px-4 py-1 bg-cyan-800 rounded-full text-sm">Web & App Development</span>
+        <span class="px-4 py-1 bg-indigo-800 rounded-full text-sm">Creative Design</span>
+      </div>
+    </div>
+  </section>
 
-  <!-- Paragraf -->
-  <p class="max-w-xl text-gray-300 mx-auto">Saya membangun solusi cerdas dengan pendekatan sederhana dan efisien. Portofolio ini menampilkan beberapa proyek AI pribadi yang dirancang dengan keterbatasan resource namun tetap berdampak nyata.</p>
-  
-  <!-- Bidang Fokus -->
-  <div class="flex flex-col md:flex-row gap-2 justify-center">
-    <span class="px-4 py-1 bg-blue-800 rounded-full text-sm">Natural Language Processing</span>
-    <span class="px-4 py-1 bg-blue-800 rounded-full text-sm">AI Model Deployment</span>
-    <span class="px-4 py-1 bg-blue-800 rounded-full text-sm">Automasi Cerdas & Analitik Data</span>
+  <!-- AI PROJECTS PAGE -->
+  <section id="ai-page" class="page hidden">
+    <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">Proyek Kecerdasan Buatan</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-blue-600">NLP</span>
+        <h3 class="text-xl font-semibold mb-2">Text Sentiment Analyzer</h3>
+        <p class="text-gray-300 mb-4">Demo analisis sentimen Bahasa Indonesia real-time, cocok untuk review dan media sosial.</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="https://huggingface.co/spaces/Bgswahyup/sentiment-minidemo" target="_blank" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium shadow transition">Demo</a>
+          <a href="https://github.com/finwalkes/sentiment-analyzer" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Kode</a>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-cyan-600">Computer Vision</span>
+        <h3 class="text-xl font-semibold mb-2">Image Classification Demo</h3>
+        <p class="text-gray-300 mb-4">Klasifikasi gambar menggunakan model lightweight CNN. Upload gambar, lihat prediksi kategori.</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="#" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium shadow transition">Demo</a>
+          <a href="#" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Kode</a>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-indigo-600">AI Utility</span>
+        <h3 class="text-xl font-semibold mb-2">AI Recommendation System</h3>
+        <p class="text-gray-300 mb-4">Sistem rekomendasi sederhana untuk produk/film, berbasis collaborative filtering dan NLP.</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="#" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium shadow transition">Demo</a>
+          <a href="#" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Kode</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEB DEV PAGE -->
+  <section id="webdev-page" class="page hidden">
+    <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">Web Development</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-purple-600">React</span>
+        <h3 class="text-xl font-semibold mb-2">Landing Page Freelancer</h3>
+        <p class="text-gray-300 mb-4">Website landing page modern, full responsive, dengan animasi halus. Source: React + Tailwind.</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="#" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium shadow transition">Live</a>
+          <a href="#" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Kode</a>
+        </div>
+      </div>
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-blue-400">Fullstack</span>
+        <h3 class="text-xl font-semibold mb-2">Sistem Booking Online</h3>
+        <p class="text-gray-300 mb-4">Platform pemesanan jadwal, dashboard admin, integrasi pembayaran. Stack: Node.js, MongoDB, React.</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="#" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium shadow transition">Live</a>
+          <a href="#" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Kode</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOBILE DEV PAGE -->
+  <section id="mobile-page" class="page hidden">
+    <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-pink-400 to-yellow-400 text-transparent bg-clip-text">Mobile Projects</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-yellow-500">Flutter</span>
+        <h3 class="text-xl font-semibold mb-2">Habit Tracker App</h3>
+        <p class="text-gray-300 mb-4">Aplikasi tracking kebiasaan, visual progress harian/mingguan, dark mode. Flutter + Firebase.</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="#" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium shadow transition">Demo</a>
+          <a href="#" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Kode</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESIGN PAGE -->
+  <section id="design-page" class="page hidden">
+    <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-green-400 to-blue-400 text-transparent bg-clip-text">Design & Kreatif</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col hover:scale-105 transition">
+        <span class="px-3 py-1 mb-2 text-xs rounded-full bg-green-500">Logo</span>
+        <h3 class="text-xl font-semibold mb-2">Logo Portfolio</h3>
+        <p class="text-gray-300 mb-4">Koleksi logo untuk berbagai startup, bisnis, dan proyek pribadi. Modern, minimalis, dan bold.</p>
+        <div class="flex gap-2 mt-auto">
+          <a href="profile.png" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium shadow transition" target="_blank">Preview</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT PAGE -->
+  <section id="about-page" class="page hidden">
+    <div class="flex flex-col md:flex-row items-center gap-8 py-16">
+      <img src="profile.png" alt="Profil" class="w-36 h-36 rounded-full border-4 border-blue-500 shadow-xl mb-6 md:mb-0">
+      <div>
+        <h2 class="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">Tentang Saya</h2>
+        <p class="text-gray-300 mb-2">
+          Halo! Saya <span class="font-semibold text-cyan-300">Bagus Wahyu Pratomo</span>, seorang digital enthusiast.  
+          Saya menggeluti bidang <b>AI, Web Dev, Mobile App</b>, serta desain kreatif.<br>
+          Suka belajar, berbagi, dan berinovasi.<br><br>
+          Tools: Python, Node.js, React, Tailwind, Flutter, Figma, dsb.<br>
+          <span class="text-gray-400">Terbuka untuk kerja remote, freelance, atau kolaborasi.</span>
+        </p>
+        <p class="text-gray-500 text-sm mt-4">CV lengkap & sertifikasi: <a href="#" class="text-blue-400 underline">Lihat PDF</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT PAGE -->
+  <section id="contact-page" class="page hidden text-center py-16">
+    <h2 class="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">Kontak & Sosial Media</h2>
+    <p class="mb-4 text-gray-300">Email: <a href="mailto:bgswahyup@email.com" class="text-blue-400 underline">bgswahyup@email.com</a></p>
+    <div class="flex justify-center gap-6 mb-4">
+      <a href="https://github.com/finwalkes" target="_blank" class="text-3xl hover:text-blue-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.415-4.042-1.415C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.085 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.332-5.467-5.931 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.958-.266 1.984-.399 3.003-.404 1.019.005 2.045.138 3.004.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.104.823 2.222 0 1.606-.014 2.898-.014 3.293 0 .322.217.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a>
+      <a href="https://linkedin.com/in/bagus-wahyu-pratomo-iota" target="_blank" class="text-3xl hover:text-blue-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 inline" fill="currentColor" viewBox="0 0 24 24"><path d="M22.23 0H1.77C.792 0 0 .775 0 1.729v20.542C0 23.225.792 24 1.77 24h20.459c.978 0 1.771-.775 1.771-1.729V1.729C24 .775 23.208 0 22.23 0zM7.12 20.452H3.56V9.047h3.56zm-1.78-178c-1.144 0-2.07-.926-2.07-2.068 0-1.143.926-2.068 2.07-2.068s2.068.925 2.068 2.068c0 1.142-.925 2.068-2.068 2.068zm1.77 13.474h-3.56v-7.255h3.56zm5.928 0h-3.56v-7.255h3.56zm0-13.474c-1.144 0-2.068-.926-2.068-2.068 0-1.143.924-2.068 2.068-2.068s2.068.925 2.068 2.068c0 1.142-.924 2.068-2.068 2.068zm5.93 13.474h-3.559v-3.537c0-.844-.016-1.928-1.176-1.928-1.177 0-1.358.919-1.358 1.865v3.6h-3.559V9.047h3.415v1.563h.049c.477-.899 1.638-1.847 3.373-1.847 3.607 0 4.274 2.373 4.274 5.459v6.23z"></path></svg></a>
+    </div>
+    <div class="flex justify-center gap-6 mt-6">
+      <a href="https://instagram.com/yourinstagram" target="_blank" class="text-xl px-4 py-2 bg-gradient-to-r from-pink-500 to-yellow-500 rounded-full shadow hover:scale-105 transition font-medium">Instagram</a>
+      <a href="https://wa.me/6281234567890" target="_blank" class="text-xl px-4 py-2 bg-gradient-to-r from-green-400 to-green-700 rounded-full shadow hover:scale-105 transition font-medium">WhatsApp</a>
+      <a href="mailto:bgswahyup@email.com" class="text-xl px-4 py-2 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full shadow hover:scale-105 transition font-medium">Email</a>
+    </div>
+    <div class="mt-10 text-gray-400">
+      <span class="text-lg">Tertarik kolaborasi, konsultasi, atau sekadar ngopi bareng?</span><br>
+      <span class="italic">Jangan ragu untuk kontak. Saya selalu terbuka untuk peluang baru dan diskusi seru!</span>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="mt-12 bg-gray-900 border-t border-gray-800 py-8 text-center text-gray-400">
+  <div class="flex justify-center gap-8 mb-3">
+    <a href="https://github.com/finwalkes" target="_blank" class="hover:text-white">GitHub</a>
+    <a href="https://linkedin.com/in/bagus-wahyu-pratomo-iota" target="_blank" class="hover:text-white">LinkedIn</a>
+    <a href="mailto:bgswahyup@email.com" class="hover:text-white">Email</a>
   </div>
-
-  <!-- Tombol CTA -->
-  <div class="mt-4 flex gap-4 justify-center">
-    <a href="#projects" class="px-6 py-2 bg-blue-500 hover:bg-blue-600 rounded-xl font-semibold shadow transition">Lihat Proyek</a>
-    <a href="#contact" class="px-6 py-2 bg-gray-700 hover:bg-gray-600 rounded-xl font-semibold shadow transition">Kontak</a>
-  </div>
-</section>
-
-<!-- Section Proyek AI -->
-<section id="projects" class="container mx-auto py-16 px-4 md:px-0">
-  <h2 class="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">Proyek AI Pilihan</h2>
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <!-- Contoh Kartu Proyek -->
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col items-start hover:scale-105 transition">
-      <span class="px-3 py-1 mb-2 text-xs rounded-full bg-blue-600">NLP</span>
-      <h3 class="text-xl font-semibold mb-2">Text Sentiment Analyzer</h3>
-      <p class="text-gray-300 mb-4">Analisis sentimen dari kalimat atau komentar menggunakan scikit-learn dan dataset publik. Hasilnya real-time dan bisa diakses via web sederhana.</p>
-      <a href="https://github.com/USERNAME/sentiment-analyzer" target="_blank" class="text-blue-400 font-medium hover:underline">Lihat Kode</a>
-    </div>
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col items-start hover:scale-105 transition">
-      <span class="px-3 py-1 mb-2 text-xs rounded-full bg-cyan-600">AI Chatbot</span>
-      <h3 class="text-xl font-semibold mb-2">Chatbot Sederhana</h3>
-      <p class="text-gray-300 mb-4">Chatbot berbasis rule sederhana, mudah dikembangkan, dan dapat diintegrasi ke website atau aplikasi lain.</p>
-      <a href="https://github.com/USERNAME/simple-chatbot" target="_blank" class="text-blue-400 font-medium hover:underline">Lihat Kode</a>
-    </div>
-    <!-- Tambah kartu proyek lain di sini -->
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 flex flex-col items-start hover:scale-105 transition">
-    <div class="flex items-center gap-2 mb-2">
-        <span class="px-3 py-1 text-xs rounded-full bg-blue-600">NLP</span>
-        <span class="px-2 py-1 text-xs rounded-full bg-green-600 text-white animate-pulse">Live Demo</span>
-    </div>
-    <h3 class="text-xl font-semibold mb-2 flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 inline-block text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-1a4 4 0 014-4h1a4 4 0 010 8h-1a4 4 0 01-4-4z" />
-        <circle cx="12" cy="9" r="4" />
-        </svg>
-        Text Sentiment Analyzer
-    </h3>
-    <p class="text-gray-300 mb-4">
-        Analisis sentimen teks secara instan!  
-        Aplikasi ini memanfaatkan <b>Natural Language Processing</b> untuk membaca dan memahami kalimat—apakah positif, negatif, atau netral.
-        <br>
-        Cocok untuk analisa komentar, review, dan sosial media.  
-        <span class="text-blue-400">Coba langsung di demo!</span>
-    </p>
-    <div class="flex gap-2 mt-auto">
-        <a href="https://huggingface.co/spaces/Bgswahyup/sentiment-minidemo" target="_blank" class="px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg font-medium shadow transition">Demo</a>
-        <a href="https://github.com/USERNAME/sentiment-analyzer" target="_blank" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow transition">Lihat Kode</a>
-    </div>
-    </div>
-
-</div>
-</section>
-
-<!-- Section About Me -->
-<section id="about" class="container mx-auto py-16 px-4 md:px-0 flex flex-col md:flex-row items-center gap-8">
-  <img src="profile.png" alt="Profil" class="w-36 h-36 rounded-full border-4 border-blue-500 shadow-xl mb-6 md:mb-0">
   <div>
-    <h2 class="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">Tentang Saya</h2>
-    <p class="text-gray-300 mb-2">
-      Halo! Saya Bagus Wahyu Pratomo, seorang penggemar AI dari Indonesia. Saya suka membangun solusi sederhana namun powerful, terutama di bidang Natural Language Processing, deployment model AI, dan automasi data.  
-      <br><br>
-      Dengan portofolio ini, saya ingin berbagi hasil karya saya yang dibangun dengan resource minimal namun tetap memberikan nilai nyata.
-    </p>
-    <p class="text-gray-400">Terbuka untuk kolaborasi remote & freelance.</p>
+    &copy; 2025 Bagus Wahyu Pratomo &middot; Nexus Portfolio <br>
+    <span class="text-sm">Design, code, and content crafted by Bagus. Powered by TailwindCSS.</span>
   </div>
-</section>
+</footer>
 
-<!-- Section Kontak -->
-<section id="contact" class="container mx-auto py-12 px-4 md:px-0 text-center">
-  <h2 class="text-3xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 text-transparent bg-clip-text">Kontak</h2>
-  <p class="mb-4 text-gray-300">Hubungi saya via email: <a href="mailto:bgswahyup@email.com" class="text-blue-400 underline">bgswahyup@email.com</a></p>
-  <div class="flex justify-center gap-4">
-    <a href="https://github.com/finwalkes" target="_blank" class="text-xl hover:text-blue-400">GitHub</a>
-    <a href="https://linkedin.com/in/bagus-wahyu-pratomo-iota" target="_blank" class="text-xl hover:text-blue-400">LinkedIn</a>
-  </div>
-</section>
-
-<!-- ANIMASI TYPING JS -->
+<!-- PAGE SWITCHING JS -->
 <script>
-  // Nama dan tagline
-  const nama = "Bagus Wahyu Pratomo";
-  const tagline = "AI Enthusiast | Machine Learning Explorer | Problem Solver";
-
-  // Fungsi animasi typing
-  function typeEffect(element, text, speed, callback) {
-    let i = 0;
-    element.innerHTML = "";
-    function typing() {
-      if (i < text.length) {
-        element.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typing, speed);
-      } else {
-        if (callback) callback();
-      }
-    }
-    typing();
+  // Simple SPA Page Switcher
+  function showPage(page) {
+    document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
+    document.getElementById(page + '-page').classList.remove('hidden');
+    // Nav highlighting
+    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-nav'));
+    let navs = document.querySelectorAll('.nav-link');
+    navs.forEach(nav => {
+      if (nav.getAttribute('onclick').includes(page)) nav.classList.add('active-nav');
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-  // Ketik nama dulu, lalu tagline
+  // Default page
   document.addEventListener("DOMContentLoaded", function() {
+    showPage('home');
+    // Typing animation home
+    const nama = "Bagus Wahyu Pratomo";
+    const tagline = "Digital Builder | AI Explorer | Web & App Developer | Creative Designer";
+    function typeEffect(element, text, speed, callback) {
+      let i = 0; element.innerHTML = "";
+      function typing() {
+        if (i < text.length) { element.innerHTML += text.charAt(i); i++; setTimeout(typing, speed);}
+        else { if (callback) callback();}
+      } typing();
+    }
     const typingText = document.getElementById("typing-text");
     const typingTagline = document.getElementById("typing-tagline");
     typeEffect(typingText, nama, 80, function() {
       typingText.innerHTML += '<span class="caret"></span>';
-      setTimeout(() => {
-        typeEffect(typingTagline, tagline, 40, () => {
-          typingTagline.innerHTML += '<span class="caret"></span>';
-        });
-      }, 400);
+      setTimeout(() => { typeEffect(typingTagline, tagline, 30, ()=>{ typingTagline.innerHTML += '<span class="caret"></span>';}); }, 400);
     });
   });
 </script>
 
-<!-- Footer -->
-<footer class="mt-12 bg-gray-900 border-t border-gray-800 py-6 text-center text-gray-400">
-  &copy; 2025 Bagus Wahyu Pratomo &middot; Built with ❤️ and AI
-  <div class="mt-2">
-    <a href="https://github.com/finwalkes" target="_blank" class="inline-block mx-2 hover:text-white">GitHub</a>
-    <a href="https://linkedin.com/in/bagus-wahyu-pratomo-iota" target="_blank" class="inline-block mx-2 hover:text-white">LinkedIn</a>
-  </div>
-</footer>
 </body>
 </html>
+
