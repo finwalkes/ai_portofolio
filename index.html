@@ -4,184 +4,285 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bagus Wahyu Pratomo — AI Portfolio</title>
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" href="logo.png">
   <style>
     html { scroll-behavior: smooth; }
-    body { min-height: 100vh; }
-    .bg-soft-grad {
-      background: linear-gradient(120deg, #b2e9fb 0%, #b6f3d2 50%, #f3f4fc 100%);
-      /* Biru muda ke hijau ke putih, super soft */
+    .cyber-glow { box-shadow: 0 0 16px 2px #0ff8fcbb, 0 1.5px 32px #7936f5a9; }
+    .cyber-glow-card {
+      box-shadow: 0 2px 24px #05d2ff66, 0 2px 4px #a726f6cc;
+      border: 2.2px solid #00fff1cc;
+      transition: transform .2s, box-shadow .2s, border-color .15s;
     }
-    .shadow-card { box-shadow: 0 6px 36px #0001, 0 2px 8px #0002; }
-    .card { transition: transform .2s, box-shadow .2s; }
-    .card:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 12px 48px #38bdf838, 0 3px 12px #0002; }
-    /* Chatbot animasi pop */
-    @keyframes chatbotPop {0%{transform:scale(0.6);opacity:0;} 100%{transform:scale(1);opacity:1;}}
-    .chatbot-pop { animation: chatbotPop .4s cubic-bezier(.4,2,.6,1); }
-    /* Bola AI */
-    .ball-ai { transition: box-shadow .2s, transform .15s; }
-    .ball-ai:active { transform: scale(1.13); box-shadow: 0 0 0 8px #a7f3d099; }
+    .cyber-glow-card:hover {
+      transform: scale(1.035) translateY(-3px);
+      box-shadow: 0 6px 48px #00fff1cc, 0 4px 12px #a726f699;
+      border-color: #f900ff99;
+    }
+    .neon-text {
+      text-shadow: 0 0 6px #14f1ff, 0 0 16px #a726f6, 0 0 28px #14f1ff55;
+    }
+    .transition-bg { transition: background 0.5s; }
+    .bubble {
+      pointer-events: none;
+      position: fixed;
+      min-width: 120px; max-width: 250px;
+      padding: 13px 19px;
+      border-radius: 1.4rem 1.4rem 1.4rem 0.4rem;
+      font-size: 1rem; font-weight: bold;
+      z-index: 101;
+      box-shadow: 0 6px 32px #a726f6cc,0 2px 16px #14f1ff44;
+      background: #fff; color: #0f1555; border:2px solid #14f1ff;
+      opacity: 0; transition: opacity .5s;
+    }
+    @media (prefers-color-scheme: dark) {
+      .bubble { background: #231d36; color: #a726f6; border:2px solid #a726f6; }
+    }
   </style>
 </head>
-<body class="bg-soft-grad relative min-h-screen flex flex-col">
+<body id="body" class="transition-bg min-h-screen flex flex-col">
 
-<!-- HEADER & LOGO -->
-<header class="flex items-center px-8 py-6">
-  <img src="logo.png" alt="Logo" class="w-14 h-14 rounded-full border-4 border-cyan-300 shadow-lg mr-3" />
-  <span class="text-2xl font-bold bg-gradient-to-r from-cyan-500 to-sky-400 text-transparent bg-clip-text tracking-wide">Nexus Bagus</span>
+<!-- THEME TOGGLE -->
+<button id="theme-toggle" aria-label="Switch dark/light mode"
+  class="fixed top-5 right-7 z-30 bg-cyan-400 hover:bg-fuchsia-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg border-2 border-white/40 transition-all">
+  <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 0 1 12.21 3a7 7 0 1 0 8.79 9.79z"/></svg>
+  <svg id="sun" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 hidden" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2m10-10h2M1 12H3m15.54-7.54l-1.42 1.42M4.22 19.78l-1.42-1.42M19.78 19.78l-1.42-1.42M4.22 4.22L2.8 5.64"/></svg>
+</button>
+
+<!-- HEADER -->
+<header class="flex items-center px-8 pt-8 pb-5">
+  <img src="logo.png" alt="Logo" class="w-14 h-14 rounded-full border-4 border-cyan-400 cyber-glow mr-3" />
+  <span class="text-2xl font-extrabold neon-text bg-gradient-to-r from-cyan-300 to-fuchsia-400 text-transparent bg-clip-text tracking-wide">Nexus Bagus</span>
 </header>
 
 <!-- HERO -->
 <main class="flex flex-col items-center justify-center flex-1 pb-8">
-  <!-- Foto Profil -->
-  <div class="shadow-lg rounded-full border-4 border-cyan-200 bg-white/50 mb-6 flex items-center justify-center"
-       style="width:110px; height:110px;">
+  <div class="shadow-xl cyber-glow rounded-full border-4 border-fuchsia-300 bg-white/30 dark:bg-slate-900/60 mb-6 flex items-center justify-center"
+       style="width:118px; height:118px;">
     <img src="profile.png" alt="Foto Bagus Nexus" class="w-24 h-24 rounded-full" />
   </div>
-  <!-- Nama dan tagline -->
-  <h1 class="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-indigo-400 to-teal-400 text-transparent bg-clip-text mb-2 text-center">Bagus Wahyu Pratomo</h1>
-  <h2 class="text-xl sm:text-2xl font-semibold text-slate-600 mb-4 text-center">Digital Creator &bull; AI Explorer &bull; Web Developer</h2>
-  <p class="max-w-xl text-gray-600 text-base sm:text-lg mx-auto mb-8 text-center">
-    <span class="font-semibold text-cyan-600">Hi! Saya Bagus,</span> digital enthusiast dari Indonesia.<br>
-    Landing-page ini fun, penuh animasi & interaktif.<br>
-    <span class="text-sky-500">Coba drag bola AI, atau klik chatbot di kanan bawah!</span>
+  <h1 class="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 via-fuchsia-500 to-blue-400 text-transparent bg-clip-text mb-2 text-center neon-text">Bagus Wahyu Pratomo</h1>
+  <h2 class="text-lg sm:text-2xl font-semibold text-fuchsia-400 dark:text-cyan-200 mb-4 text-center neon-text">Digital Creator • AI Explorer • Web Developer</h2>
+  <p class="max-w-xl text-gray-700 dark:text-cyan-200 text-base sm:text-lg mx-auto mb-8 text-center font-medium">
+    <span class="font-semibold text-cyan-500 dark:text-fuchsia-400">Hi! Saya Bagus,</span> digital enthusiast dari Indonesia.<br>
+    Portfolio cyber, fun, interaktif. <span class="text-cyan-400">Coba drag maskot AI atau klik chatbot di kanan bawah!</span>
   </p>
-  <!-- Cards -->
   <div class="flex flex-wrap justify-center gap-6 mt-4">
     <!-- Card 1 -->
-    <div class="card shadow-card bg-[#232a37ee] rounded-2xl p-7 w-[265px] min-h-[168px] flex flex-col items-start">
+    <div class="cyber-glow-card bg-[#232a37ee] dark:bg-[#1a152cde] rounded-2xl p-7 w-[265px] min-h-[168px] flex flex-col items-start">
       <div class="flex items-center gap-2 mb-2">
-        <svg width="28" height="28" fill="none" stroke="#0ea5e9" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 8h8M8 12h5"/></svg>
-        <span class="text-cyan-300 font-bold">Knowledge</span>
+        <svg width="28" height="28" fill="none" stroke="#14f1ff" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 8h8M8 12h5"/></svg>
+        <span class="text-cyan-200 font-bold neon-text">Knowledge</span>
       </div>
-      <p class="text-slate-200 text-base mb-2">Insight, artikel, dan tips AI & web. Knowledge base interaktif.</p>
-      <a href="knowledge.html" class="text-cyan-400 text-sm underline hover:text-cyan-200">Lihat detail &rarr;</a>
+      <p class="text-cyan-100 text-base mb-2">Insight, artikel, dan tips AI & web. Knowledge base interaktif.</p>
+      <a href="knowledge.html" class="text-cyan-400 text-sm underline hover:text-fuchsia-300">Lihat detail &rarr;</a>
     </div>
     <!-- Card 2 -->
-    <div class="card shadow-card bg-[#232a37ee] rounded-2xl p-7 w-[265px] min-h-[168px] flex flex-col items-start">
+    <div class="cyber-glow-card bg-[#232a37ee] dark:bg-[#1a152cde] rounded-2xl p-7 w-[265px] min-h-[168px] flex flex-col items-start">
       <div class="flex items-center gap-2 mb-2">
-        <svg width="28" height="28" fill="none" stroke="#818cf8" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M16 3v4M8 3v4"/></svg>
-        <span class="text-indigo-200 font-bold">Project</span>
+        <svg width="28" height="28" fill="none" stroke="#a726f6" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M16 3v4M8 3v4"/></svg>
+        <span class="text-fuchsia-200 font-bold neon-text">Project</span>
       </div>
-      <p class="text-slate-200 text-base mb-2">Showcase proyek nyata: AI, web, open-source, produk digital.</p>
-      <a href="project.html" class="text-indigo-200 text-sm underline hover:text-indigo-100">Jelajahi project &rarr;</a>
+      <p class="text-cyan-100 text-base mb-2">Showcase proyek nyata: AI, web, open-source, produk digital.</p>
+      <a href="project.html" class="text-fuchsia-200 text-sm underline hover:text-cyan-200">Jelajahi project &rarr;</a>
     </div>
     <!-- Card 3 -->
-    <div class="card shadow-card bg-[#232a37ee] rounded-2xl p-7 w-[265px] min-h-[168px] flex flex-col items-start">
+    <div class="cyber-glow-card bg-[#232a37ee] dark:bg-[#1a152cde] rounded-2xl p-7 w-[265px] min-h-[168px] flex flex-col items-start">
       <div class="flex items-center gap-2 mb-2">
-        <svg width="28" height="28" fill="none" stroke="#38bdf8" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        <span class="text-sky-300 font-bold">Detail</span>
+        <svg width="28" height="28" fill="none" stroke="#0ea5e9" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        <span class="text-cyan-200 font-bold neon-text">Detail</span>
       </div>
-      <p class="text-slate-200 text-base mb-2">Journey, story, proses membangun produk/AI, termasuk behind the scene!</p>
-      <a href="detail.html" class="text-sky-300 text-sm underline hover:text-sky-200">Cek detail &rarr;</a>
+      <p class="text-cyan-100 text-base mb-2">Journey, story, proses membangun produk/AI, termasuk behind the scene!</p>
+      <a href="detail.html" class="text-cyan-300 text-sm underline hover:text-fuchsia-200">Cek detail &rarr;</a>
     </div>
   </div>
 </main>
 
-<!-- AI Ball -->
-<div id="ai-ball" class="ball-ai fixed left-12 bottom-36 bg-cyan-400 rounded-full w-16 h-16 flex items-center justify-center shadow-xl cursor-pointer select-none"
-     style="box-shadow:0 2px 18px #22d3ee44;">
-  <span class="font-bold text-white text-lg">AI</span>
+<!-- Maskot AI (SVG Drag+Click) -->
+<!-- <div id="ai-maskot" -->
+    <!-- style="position:fixed; left:70px; bottom:135px; width:70px; height:70px; cursor:pointer; z-index:99; user-select:none;"> -->
+  <!-- SVG MASKOT AI CYBER, BISA KAMU GANTI JADI LEBIH KEREN -->
+  <!-- <svg width="70" height="70" viewBox="0 0 70 70" fill="none"> -->
+    <!-- Kepala robot -->
+    <!-- <ellipse cx="35" cy="36" rx="23" ry="22" fill="#19172a" stroke="#1de1ff" stroke-width="3"/> -->
+    <!-- Otak AI -->
+    <!-- <ellipse cx="35" cy="36" rx="16" ry="15" fill="#7b42ff" stroke="#fff" stroke-width="2"/> -->
+    <!-- Mata -->
+    <!-- <ellipse cx="27" cy="36" rx="3.6" ry="3.6" fill="#fff"/> -->
+    <!-- <ellipse cx="43" cy="36" rx="3.6" ry="3.6" fill="#fff"/> -->
+    <!-- <ellipse cx="27" cy="36" rx="1.6" ry="1.6" fill="#1de1ff"/> -->
+    <!-- <ellipse cx="43" cy="36" rx="1.6" ry="1.6" fill="#1de1ff"/> -->
+    <!-- Senyum -->
+    <!-- <path d="M29 43 Q35 48 41 43" stroke="#fff" stroke-width="2" fill="none" /> -->
+    <!-- AI Core -->
+    <!-- <circle cx="35" cy="27" r="5" fill="#1de1ff" fill-opacity=".7" /> -->
+    <!-- <circle cx="35" cy="27" r="2" fill="#fff"/> -->
+    <!-- Neon ring -->
+    <!-- <ellipse cx="35" cy="36" rx="23" ry="22" fill="none" stroke="#ef32d9" stroke-width="2" filter="url(#glow1)"/> -->
+    <!-- <defs> -->
+      <!-- <filter id="glow1"> -->
+        <!-- <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/> -->
+        <!-- <feMerge> -->
+          <!-- <feMergeNode in="coloredBlur"/> -->
+          <!-- <feMergeNode in="SourceGraphic"/> -->
+        <!-- </feMerge> -->
+      <!-- </filter> -->
+    <!-- </defs> -->
+  <!-- </svg> -->
+<!-- </div> -->
+
+<div id="ai-maskot"
+    style="position:fixed; left:70px; bottom:135px; width:70px; height:70px; cursor:pointer; z-index:99; user-select:none;">
+  <img src="maskot.png" alt="AI Maskot" style="width:100%;height:100%;border-radius:50%;box-shadow:0 0 16px #1de1ff99;">
 </div>
 
+
 <!-- Chatbot Button -->
-<button id="chatbot-btn" class="fixed bottom-8 right-8 bg-cyan-400 rounded-full p-4 shadow-xl hover:bg-cyan-500 transition-all" title="Tanya chatbot">
-  <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="10" fill="#0369a1"/><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#fff"/><circle cx="9" cy="10" r="1" fill="#fff"/><circle cx="15" cy="10" r="1" fill="#fff"/></svg>
+<button id="chatbot-btn"
+  class="fixed bottom-8 right-8 bg-fuchsia-500 dark:bg-cyan-400 rounded-full p-4 shadow-xl hover:bg-cyan-500 dark:hover:bg-fuchsia-400 transition-all">
+  <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2">
+    <circle cx="12" cy="12" r="10" fill="#a726f6"/>
+    <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke="#fff"/>
+    <circle cx="9" cy="10" r="1" fill="#fff"/>
+    <circle cx="15" cy="10" r="1" fill="#fff"/>
+  </svg>
 </button>
 
 <!-- Chatbot Dummy Pop -->
-<div id="chatbot-pop" class="fixed bottom-28 right-8 z-50 w-[370px] max-w-[94vw] bg-white rounded-xl shadow-xl p-4 border border-cyan-300 hidden chatbot-pop">
+<div id="chatbot-pop"
+  class="fixed bottom-28 right-8 z-50 w-[350px] max-w-[95vw] bg-white dark:bg-[#231d36] rounded-xl shadow-xl p-4 border border-cyan-300 dark:border-fuchsia-400 hidden">
   <div class="flex items-center gap-2 mb-3">
-    <svg width="22" height="22" fill="none" stroke="#0ea5e9" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="10" r="1" fill="#0ea5e9"/><circle cx="15" cy="10" r="1" fill="#0ea5e9"/><path d="M8 15s1.5 1.2 4 1.2 4-1.2 4-1.2" stroke="#0ea5e9"/></svg>
-    <b class="text-cyan-600">AI Chatbot (Simulasi)</b>
-    <button onclick="closeChat()" class="ml-auto bg-cyan-100 px-2 py-0.5 rounded hover:bg-cyan-300 text-slate-800">×</button>
+    <b class="text-fuchsia-600 dark:text-cyan-300">AI Chatbot (Simulasi)</b>
+    <button onclick="closeChat()" class="ml-auto bg-cyan-100 dark:bg-fuchsia-800 px-2 py-0.5 rounded hover:bg-cyan-300 text-slate-800 dark:text-fuchsia-200">×</button>
   </div>
-  <div id="chatbot-msgs" class="text-gray-700 mb-2 overflow-y-auto" style="max-height:170px"></div>
+  <div id="chatbot-msgs" class="text-gray-700 dark:text-cyan-200 mb-2 overflow-y-auto" style="max-height:170px"></div>
   <form onsubmit="sendChat(event)" class="flex items-center gap-1">
-    <input id="chatbot-input" class="flex-1 px-3 py-2 rounded-lg bg-cyan-50 border border-cyan-100 text-gray-700" placeholder="Tulis pertanyaan..." autocomplete="off"/>
-    <button type="submit" class="bg-cyan-400 text-white px-4 py-2 rounded-lg font-semibold hover:bg-cyan-500">Kirim</button>
+    <input id="chatbot-input" class="flex-1 px-3 py-2 rounded-lg bg-cyan-50 dark:bg-[#291d3e] border border-cyan-100 dark:border-fuchsia-400 text-gray-700 dark:text-cyan-200" placeholder="Tulis pertanyaan..." autocomplete="off"/>
+    <button type="submit" class="bg-fuchsia-500 dark:bg-cyan-400 text-white px-4 py-2 rounded-lg font-semibold hover:bg-cyan-500 dark:hover:bg-fuchsia-400">Kirim</button>
   </form>
 </div>
 
-<!-- Footer -->
-<footer class="mt-auto py-6 text-center text-gray-400">
-  <div class="flex justify-center gap-7 mb-1">
-    <a href="https://github.com/finwalkes" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-700">GitHub</a>
-    <a href="https://linkedin.com/in/bagus-wahyu-pratomo-iota" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-700">LinkedIn</a>
-    <a href="mailto:bgswahyup@email.com" class="hover:text-cyan-700">Email</a>
+<!-- Footer Kontak -->
+<footer class="mt-auto py-8 text-center text-cyan-700 dark:text-fuchsia-200">
+  <div class="flex flex-wrap justify-center gap-7 mb-2 text-lg">
+    <a href="https://wa.me/6287772765896" target="_blank" rel="noopener" class="hover:text-fuchsia-400 flex items-center gap-1">
+      <svg fill="currentColor" class="w-6 h-6 inline" viewBox="0 0 24 24"><path d="M12 2C6.476 2 2 6.477 2 12c0 1.785.467 3.526 1.352 5.055L2 22l5.117-1.333C8.445 21.225 10.21 21.9 12 21.9c5.523 0 10-4.477 10-9.9S17.523 2 12 2zm-.037 18.164c-1.693 0-3.365-.445-4.811-1.29l-.344-.2-3.04.792.81-2.96-.225-.345A8.155 8.155 0 0 1 3.894 12c0-4.485 3.64-8.126 8.129-8.126 4.489 0 8.13 3.641 8.13 8.126s-3.641 8.126-8.13 8.126z"/><path d="M17.334 14.48c-.236-.118-1.395-.684-1.61-.761-.215-.079-.371-.118-.528.119-.157.236-.607.76-.745.917-.138.157-.274.177-.51.059-.236-.118-.995-.367-1.896-1.172-.7-.625-1.176-1.396-1.314-1.632-.138-.236-.015-.363.104-.481.107-.106.236-.274.354-.412.12-.14.16-.236.238-.393.08-.157.04-.295-.02-.413-.059-.118-.528-1.277-.724-1.751-.191-.46-.386-.398-.528-.406-.138-.009-.295-.011-.454-.011-.157 0-.413.059-.629.295-.216.236-.82.803-.82 1.958 0 1.155.84 2.274.957 2.432.118.157 1.645 2.52 4.133 3.436.578.199 1.028.317 1.378.406.578.154 1.105.132 1.52.08.464-.056 1.395-.571 1.592-1.124.197-.552.197-1.024.138-1.124-.059-.1-.215-.157-.45-.275z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://github.com/finwalkes" target="_blank" rel="noopener" class="hover:text-fuchsia-400 flex items-center gap-1">
+      <svg fill="currentColor" class="w-6 h-6 inline" viewBox="0 0 24 24"><path d="M12 .297C5.373.297 0 5.67 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.065c-3.338.724-4.042-1.415-4.042-1.415-.546-1.388-1.333-1.757-1.333-1.757-1.089-.745.084-.729.084-.729 1.205.085 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.304-5.467-1.332-5.467-5.931 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.958-.266 1.984-.399 3.003-.404 1.019.005 2.045.138 3.004.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.625-5.479 5.921.43.372.823 1.104.823 2.222v3.293c0 .322.217.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      GitHub
+    </a>
+    <a href="https://linkedin.com/in/bagus-wahyu-pratomo-iota" target="_blank" rel="noopener" class="hover:text-fuchsia-400 flex items-center gap-1">
+      <svg fill="currentColor" class="w-6 h-6 inline" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.27c-.966 0-1.75-.79-1.75-1.77s.784-1.77 1.75-1.77c.965 0 1.75.79 1.75 1.77s-.785 1.77-1.75 1.77zm13.5 10.27h-3v-4.6c0-1.09-.02-2.5-1.52-2.5-1.52 0-1.75 1.18-1.75 2.41v4.69h-3v-9h2.89v1.23h.04c.4-.76 1.39-1.56 2.85-1.56 3.05 0 3.62 2.01 3.62 4.61v5.72z"/></svg>
+      LinkedIn
+    </a>
+    <a href="mailto:bgswahyup@email.com" class="hover:text-fuchsia-400 flex items-center gap-1">
+      <svg fill="currentColor" class="w-6 h-6 inline" viewBox="0 0 24 24"><path d="M1.5 5.5A2.5 2.5 0 0 1 4 3h16a2.5 2.5 0 0 1 2.5 2.5v13A2.5 2.5 0 0 1 20 21.5H4A2.5 2.5 0 0 1 1.5 18.5v-13zm2 0v.611l8 5.173 8-5.173V5.5a.5.5 0 0 0-.5-.5H4a.5.5 0 0 0-.5.5zm16 13a.5.5 0 0 0 .5-.5V8.206l-7.47 4.836a1.5 1.5 0 0 1-1.56 0L3.5 8.207V18.5a.5.5 0 0 0 .5.5h16z"/></svg>
+      Email
+    </a>
+    <a href="https://instagram.com/" target="_blank" rel="noopener" class="hover:text-fuchsia-400 flex items-center gap-1">
+      <svg fill="currentColor" class="w-6 h-6 inline" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.849.07 1.366.061 2.633.353 3.608 1.328.974.975 1.267 2.243 1.328 3.608.058 1.265.07 1.645.07 4.849s-.012 3.584-.07 4.849c-.061 1.366-.354 2.633-1.328 3.608-.975.975-2.243 1.267-3.608 1.328-1.265.058-1.645.07-4.849.07s-3.584-.012-4.849-.07c-1.366-.061-2.633-.354-3.608-1.328-.975-.975-1.267-2.243-1.328-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.849c.061-1.366.353-2.633 1.328-3.608C4.536 2.586 5.804 2.294 7.17 2.233c1.265-.058 1.645-.07 4.849-.07zM12 0C8.741 0 8.332.013 7.052.072 5.777.131 4.601.479 3.643 1.437 2.685 2.395 2.337 3.572 2.278 4.848c-.059 1.28-.072 1.69-.072 5.052s.013 3.772.072 5.052c.059 1.276.407 2.453 1.365 3.411.958.958 2.134 1.306 3.41 1.365 1.28.059 1.689.072 5.052.072s3.772-.013 5.052-.072c1.276-.059 2.453-.407 3.411-1.365.958-.958 1.306-2.135 1.365-3.411.059-1.28.072-1.69.072-5.052s-.013-3.772-.072-5.052c-.059-1.276-.407-2.453-1.365-3.411C19.452.479 18.276.131 17.001.072 15.721.013 15.312 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.882 1.44 1.44 0 0 0 0-2.882z"/></svg>
+      Instagram
+    </a>
   </div>
-  <div>
+  <div class="mt-2">
     &copy; 2025 Bagus Wahyu Pratomo · Nexus Portfolio<br>
-    <span class="text-sm">Design & code by Bagus. Powered by TailwindCSS. Aman, tanpa backend.</span>
+    <span class="text-sm">Design & code by Bagus. Cyber-styled, aman, tanpa backend.</span>
   </div>
 </footer>
 
-<!-- SCRIPTS -->
 <script>
-/* Bola AI — Drag & Bouncing */
-const ai = document.getElementById('ai-ball');
-let drag = false, offset = {x:0,y:0};
-ai.addEventListener('mousedown', (e)=>{
-  drag = true;
-  offset.x = e.offsetX; offset.y = e.offsetY;
-});
-document.addEventListener('mousemove', (e)=>{
-  if(!drag) return;
-  ai.style.left = (e.clientX - offset.x) + 'px';
-  ai.style.top = (e.clientY - offset.y) + 'px';
-});
-document.addEventListener('mouseup', ()=>{ drag = false; });
-ai.addEventListener('click', ()=>{
-  if(drag) return;
-  ai.style.transform = "scale(1.13)";
-  setTimeout(()=>{ai.style.transform="";}, 160);
-  if (!document.getElementById('bubble-talk')) {
-    const talk = document.createElement('div');
-    talk.id = 'bubble-talk';
-    talk.innerText = ["Hai, aku bola AI!","Drag aku!","Chatbot-nya juga interaktif!","Keren, bro!"][Math.floor(Math.random()*4)];
-    talk.style.position = "fixed";
-    talk.style.left = "110px"; talk.style.bottom = "190px";
-    talk.style.background="#fff"; talk.style.color="#0369a1";
-    talk.style.borderRadius="12px"; talk.style.padding="10px 16px";
-    talk.style.boxShadow="0 8px 32px #0003"; talk.style.fontWeight="bold";
-    talk.style.fontSize = "1rem"; talk.style.zIndex = "99";
-    document.body.appendChild(talk);
-    setTimeout(()=>{talk.remove();}, 1850);
-  }
-});
+// ====== THEME TOGGLE + CYBER GRADIENT DYNAMIC (FRAMEWORK METHOD) ======
+const body = document.getElementById('body');
+const toggle = document.getElementById('theme-toggle');
+const moon = document.getElementById('moon');
+const sun = document.getElementById('sun');
+let dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-/* Dummy Chatbot */
-const dummyResponses = [
-  "Halo, ada yang bisa saya bantu?",
-  "Portfolio ini dibangun dengan HTML, TailwindCSS, dan sentuhan AI interaktif.",
-  "Kamu bisa cek project di bawah, atau klik knowledge untuk insight AI & web!",
-  "Ayo coba drag bola AI di kiri bawah, seru juga loh!",
-  "Butuh bantuan lebih lanjut? Kontak saya via LinkedIn/GitHub di bawah!",
-  "Kamu keren juga!"
+function setTheme(isDark) {
+  dark = isDark;
+  moon.classList.toggle('hidden', dark);
+  sun.classList.toggle('hidden', !dark);
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+}
+toggle.onclick = () => setTheme(!dark);
+setTheme(localStorage.getItem('theme') === 'dark' || (localStorage.getItem('theme') == null && dark));
+
+// CYBER GRADIENT DYNAMIC, BERBASIS RUMUS/METODE FRAMEWORK
+function getCyberGradientColors(time, darkMode = false) {
+  // Gunakan rumus dasar "framework" (modular, bisa replace hue/contrast)
+  const h1 = (darkMode ? 248 : 190) + Math.sin(time / 4) * 50; // utama
+  const h2 = (darkMode ? 290 : 288) + Math.cos(time / 3) * 65; // tengah
+  const h3 = (darkMode ? 288 : 160) + Math.sin(time / 2) * 55; // akhir
+  const s1 = 85, s2 = 100, s3 = 98;
+  const l1 = darkMode ? 24 : 54, l2 = darkMode ? 28 : 60, l3 = darkMode ? 34 : 58;
+  return [
+    `hsl(${h1},${s1}%,${l1}%)`,
+    `hsl(${h2},${s2}%,${l2}%)`,
+    `hsl(${h3},${s3}%,${l3}%)`
+  ];
+}
+function animateGradient() {
+  const t = performance.now() / 1000;
+  const [c1, c2, c3] = getCyberGradientColors(t, dark);
+  document.body.style.background = `linear-gradient(120deg, ${c1} 0%, ${c2} 55%, ${c3} 100%)`;
+  requestAnimationFrame(animateGradient);
+}
+animateGradient();
+
+// ====== DRAGGABLE MASKOT AI CYBER (SVG) ======
+const ai = document.getElementById('ai-maskot');
+let drag = false, offset = {x:0,y:0}, pos = {x:70,y:135};
+function setAIPos(x, y) {
+  ai.style.left = x+'px'; ai.style.top = y+'px'; pos = {x,y};
+  const bubble = document.getElementById('ai-bubble');
+  if (bubble) { bubble.style.left = (x+65)+'px'; bubble.style.top = (y-12)+'px'; }
+}
+ai.addEventListener('mousedown', (e)=>{ drag = true; offset.x = e.offsetX; offset.y = e.offsetY; });
+document.addEventListener('mousemove', (e)=>{ if(!drag) return; setAIPos(e.clientX - offset.x, e.clientY - offset.y); });
+document.addEventListener('mouseup', ()=>{ drag = false; });
+
+// BUBBLE SPEECH FOLLOW MASCOT AI
+const aiMessages = [
+  "Halo, aku Maskot AI! 🤖", "Drag aku ke mana aja! Klik buat tanya.",
+  "Portfolio ini cyber, fun, & aman.", "Punya pertanyaan? Klik aku!",
+  "AI itu masa depan, bro.", "Cari knowledge, project, atau detail di bawah ya!"
 ];
-function showChat() {
-  document.getElementById('chatbot-pop').classList.remove('hidden');
-  document.getElementById('chatbot-input').focus();
+function showAIBubble(msg) {
+  let bubble = document.getElementById('ai-bubble');
+  if (!bubble) {
+    bubble = document.createElement('div');
+    bubble.id = 'ai-bubble';
+    bubble.className = 'bubble';
+    document.body.appendChild(bubble);
+  }
+  bubble.textContent = msg;
+  setAIPos(pos.x, pos.y);
+  bubble.style.opacity = 1;
+  clearTimeout(bubble._timeout);
+  bubble._timeout = setTimeout(()=>{ bubble.style.opacity = 0; }, 2600);
 }
-function closeChat() {
-  document.getElementById('chatbot-pop').classList.add('hidden');
-}
-document.getElementById('chatbot-btn').onclick = showChat;
+ai.addEventListener('click', ()=>{ showAIBubble(aiMessages[Math.floor(Math.random()*aiMessages.length)]); });
+
+// Tambahin di <script> bawah HTML kamu
+const chatBtn = document.getElementById('chatbot-btn');
+const chatPop = document.getElementById('chatbot-pop');
+chatBtn.onclick = () => chatPop.classList.toggle('hidden');
+function closeChat() { chatPop.classList.add('hidden'); }
 function sendChat(e) {
   e.preventDefault();
   const inp = document.getElementById('chatbot-input');
-  const msg = inp.value.trim();
-  if (!msg) return;
-  const box = document.getElementById('chatbot-msgs');
-  box.innerHTML += `<div><b class="text-cyan-500">You:</b> ${msg}</div>`;
-  setTimeout(()=>{
-    box.innerHTML += `<div><b class="text-cyan-600">AI:</b> ${dummyResponses[Math.floor(Math.random()*dummyResponses.length)]}</div>`;
-    box.scrollTop = box.scrollHeight;
-  }, 700);
-  inp.value = "";
+  const msgBox = document.getElementById('chatbot-msgs');
+  if (inp.value.trim().length === 0) return;
+  msgBox.innerHTML += `<div class='mb-1'><b>Kamu:</b> ${inp.value}</div>`;
+  setTimeout(()=> {
+    msgBox.innerHTML += `<div class='mb-2 text-cyan-600 dark:text-fuchsia-300'><b>AI:</b> Chatbot simulasi, tanya apa aja!</div>`;
+    msgBox.scrollTop = msgBox.scrollHeight;
+  }, 400);
+  inp.value = '';
 }
+
 </script>
 </body>
 </html>
