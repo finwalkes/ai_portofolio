@@ -263,24 +263,80 @@ function showAIBubble(msg) {
   clearTimeout(bubble._timeout);
   bubble._timeout = setTimeout(()=>{ bubble.style.opacity = 0; }, 2600);
 }
-ai.addEventListener('click', ()=>{ showAIBubble(aiMessages[Math.floor(Math.random()*aiMessages.length)]); });
 
-// Tambahin di <script> bawah HTML kamu
 const chatBtn = document.getElementById('chatbot-btn');
 const chatPop = document.getElementById('chatbot-pop');
 chatBtn.onclick = () => chatPop.classList.toggle('hidden');
 function closeChat() { chatPop.classList.add('hidden'); }
+
 function sendChat(e) {
   e.preventDefault();
   const inp = document.getElementById('chatbot-input');
   const msgBox = document.getElementById('chatbot-msgs');
-  if (inp.value.trim().length === 0) return;
-  msgBox.innerHTML += `<div class='mb-1'><b>Kamu:</b> ${inp.value}</div>`;
-  setTimeout(()=> {
-    msgBox.innerHTML += `<div class='mb-2 text-cyan-600 dark:text-fuchsia-300'><b>AI:</b> Chatbot simulasi, tanya apa aja!</div>`;
-    msgBox.scrollTop = msgBox.scrollHeight;
-  }, 400);
+  const text = inp.value.trim();
+  if (!text) return;
+  msgBox.innerHTML += `<div class='mb-1'><b>Kamu:</b> ${escapeHTML(text)}</div>`;
   inp.value = '';
+  msgBox.scrollTop = msgBox.scrollHeight;
+
+  setTimeout(() => {
+    const response = botResponse(text);
+    msgBox.innerHTML += `<div class='mb-2 text-cyan-600 dark:text-fuchsia-300'><b>AI:</b> ${response}</div>`;
+    msgBox.scrollTop = msgBox.scrollHeight;
+  }, 600);
+}
+
+// Respon sederhana, modifikasi sesuai keinginan!
+function botResponse(text) {
+  const q = text.toLowerCase();
+  if (q.includes("halo") || q.includes("hi") || q.includes("hai")) {
+    return "Halo juga! Ada yang bisa aku bantu tentang AI, web, atau portfolio Bagus?";
+  }
+  if (q.includes("siapa kamu")) {
+    return "Aku chatbot sederhana, maskot AI di portfolio Bagus Wahyu Pratomo 👾.";
+  }
+  if (q.includes("bagus") || q.includes("owner")) {
+    return "Bagus Wahyu Pratomo adalah digital creator & AI enthusiast. Mau lihat projectnya?";
+  }
+  if (q.includes("project")) {
+    return "Project ada di card PROJECT atau klik menu PROJECT, semuanya open source & showcase!";
+  }
+  if (q.includes("kontak") || q.includes("hubungi")) {
+    return "Kontak Bagus: WhatsApp, LinkedIn, Email, IG. Ada di bagian footer ya 👇";
+  }
+  if (q.includes("ai") || q.includes("artificial intelligence")) {
+    return "AI (Artificial Intelligence) adalah bidang teknologi untuk membuat mesin bisa berpikir & belajar seperti manusia!";
+  }
+  if (q.includes("web")) {
+    return "Web development di sini mencakup front-end, back-end, fullstack, & best practice keamanan.";
+  }
+  if (q.includes("thanks") || q.includes("makasih")) {
+    return "Sama-sama! Jangan sungkan buat tanya lagi 😎";
+  }
+  if (q.includes("dark mode") || q.includes("light mode")) {
+    return "Klik tombol bulan/matahari di pojok kanan atas untuk ganti tema gelap/terang 🚀";
+  }
+  // Default random fallback
+  const fallback = [
+    "Maaf, aku belum paham pertanyaanmu. Coba tanya seputar AI, project, web, atau portfolio.",
+    "Coba tanya: 'project', 'tentang Bagus', atau 'AI itu apa?' 😉",
+    "Pertanyaan belum terdaftar. Tapi aku selalu belajar tiap hari!",
+    "Silakan cek card knowledge, project, atau detail untuk eksplorasi portfolio ini."
+  ];
+  return fallback[Math.floor(Math.random()*fallback.length)];
+}
+
+// Helper untuk keamanan XSS di chat
+function escapeHTML(str) {
+  return str.replace(/[&<>"']/g, function (m) {
+    return ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    })[m];
+  });
 }
 
 </script>
