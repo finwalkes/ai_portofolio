@@ -234,14 +234,44 @@ animateGradient();
 // ====== DRAGGABLE MASKOT AI CYBER (SVG) ======
 const ai = document.getElementById('ai-maskot');
 let drag = false, offset = {x:0,y:0}, pos = {x:70,y:135};
+
 function setAIPos(x, y) {
-  ai.style.left = x+'px'; ai.style.top = y+'px'; pos = {x,y};
+  ai.style.left = x + 'px';
+  ai.style.top = y + 'px';
+  pos = {x, y};
+  // Bubble ngikut maskot
   const bubble = document.getElementById('ai-bubble');
-  if (bubble) { bubble.style.left = (x+65)+'px'; bubble.style.top = (y-12)+'px'; }
+  if (bubble) { bubble.style.left = (x + 65) + 'px'; bubble.style.top = (y - 12) + 'px'; }
 }
-ai.addEventListener('mousedown', (e)=>{ drag = true; offset.x = e.offsetX; offset.y = e.offsetY; });
-document.addEventListener('mousemove', (e)=>{ if(!drag) return; setAIPos(e.clientX - offset.x, e.clientY - offset.y); });
-document.addEventListener('mouseup', ()=>{ drag = false; });
+
+// === Mouse Events ===
+ai.addEventListener('mousedown', (e) => {
+  drag = true;
+  offset.x = e.offsetX;
+  offset.y = e.offsetY;
+});
+document.addEventListener('mousemove', (e) => {
+  if (!drag) return;
+  setAIPos(e.clientX - offset.x, e.clientY - offset.y);
+});
+document.addEventListener('mouseup', () => { drag = false; });
+
+// === Touch Events (Mobile) ===
+ai.addEventListener('touchstart', (e) => {
+  drag = true;
+  const touch = e.touches[0];
+  // posisi touch ke maskot
+  const rect = ai.getBoundingClientRect();
+  offset.x = touch.clientX - rect.left;
+  offset.y = touch.clientY - rect.top;
+});
+document.addEventListener('touchmove', (e) => {
+  if (!drag) return;
+  const touch = e.touches[0];
+  setAIPos(touch.clientX - offset.x, touch.clientY - offset.y);
+});
+document.addEventListener('touchend', () => { drag = false; });
+
 
 // BUBBLE SPEECH FOLLOW MASCOT AI
 const aiMessages = [
